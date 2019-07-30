@@ -22,5 +22,5 @@ function database ($sql, $connection, $fetch) {
 
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-    $result = $stmt->fetchAll();
+    return $result = $stmt->fetchAll();
 }
