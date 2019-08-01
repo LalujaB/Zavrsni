@@ -1,14 +1,15 @@
 <?php
-include ('include/header.php');
-include ('include/db.php');
+include('include/header.php');
+include('include/db.php');
+?>
+
+<?php
+$sql ="SELECT id, title, body, author, created_at FROM posts ORDER BY created_at DESC";
+
+$posts = database($sql, $connection, 'fetchAll');
 
 ?>
 
-    <?php
-        $sql ="SELECT id, title, body, author, created_at FROM posts ORDER BY created_at DESC";
-
-        $posts = database($sql, $connection, "fetchAll");
-    ?>
 
 
     <link rel="stylesheet" href="styles/blog.css" type="text/css">
@@ -20,37 +21,21 @@ include ('include/db.php');
 
             <div class="col-sm-8 blog-main">
 
+                <?php
+                foreach($posts as $post){
+                    ?>
 
-               <?php foreach ($posts as $post) { ?>
+                    <div class="blog-post">
+                        <a href="single-post.php?id=<?php echo $post['id']; ?>"><h2 class="blog-post-title"><?php echo $post['title']; ?></h2></a>
+                        <p class="blog-post-meta"><?php echo $post['created_at']. " "; ?> by <a href="#"><?php echo " " . $post['author']; ?></a></p>
 
-                <div class="blog-post">
+                        <hr>
+                        <p><?php echo $post['body']; ?></p>
 
-                    <a href="single-post.php?post_id=<?php echo $post['id']; ?>">
-
-                        <h2 class="blog-post-title"><?php echo $post['title'] ?></h2>
-
-                    </a>
-
-                    <p class="blog-post-meta"><?php echo $post['created_at'] . " "; ?> by <a href="#"><?php echo " " . $post['author']; ?></a></p>
-
-                    <hr>
-
-                    <p><?php echo $post['body']; ?></p>
-
-                </div>
-
+                    </div><!-- /.blog-post -->
                 <?php } ?>
 
 
-                <div class="blog-post">
-                    <a href "#"> <h2 class="blog-post-title">Sample blog post</h2></a>
-                    <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-
-                    <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-                    <hr>
-                    <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-
-                </div><!-- /.blog-post -->
 
 
 
@@ -61,7 +46,16 @@ include ('include/db.php');
 
             </div><!-- /.blog-main -->
 
-<?php
+            <?php
+            //dodavanje sidebar-a
+            include('include/sidebar.php');
+            ?>
 
-include ('include/sidebar.php');
-include ('include/footer.php');
+        </div><!-- /.row -->
+    </main><!-- /.container -->
+
+
+<?php
+//dodavanje footer-a
+include('include/footer.php');
+?>
