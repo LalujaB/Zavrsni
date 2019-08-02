@@ -1,5 +1,6 @@
 <?php
 include("include/db.php");
+
 if(!isset($_POST['deleteComm'])){
     header("location:index.php");
 }else{

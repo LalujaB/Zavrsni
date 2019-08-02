@@ -4,16 +4,10 @@ include('include/db.php');
 ?>
 
 <?php
-$sql ="SELECT id, title, body, author, created_at FROM posts ORDER BY created_at DESC";
+$sql ="SELECT * FROM posts ORDER BY posts.created_at DESC";
 
 $posts = database($sql, $connection, 'fetchAll');
-
 ?>
-
-
-
-    <link rel="stylesheet" href="styles/blog.css" type="text/css">
-    <link rel="stylesheet" href="styles/styles.css" type="text/css">
 
     <main role="main" class="container">
 
@@ -39,7 +33,10 @@ $posts = database($sql, $connection, 'fetchAll');
 
 
 
-
+                <nav class="blog-pagination">
+                    <a class="btn btn-outline-primary" href="#">Older</a>
+                    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+                </nav>
 
             </div><!-- /.blog-main -->
 

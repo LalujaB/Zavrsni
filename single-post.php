@@ -12,11 +12,6 @@ if(isset($_GET['id'])){
 
     $singlePost = database($sql, $connection, 'fetchAll');
     ?>
-
-<link rel="stylesheet" href="styles/blog.css" type="text/css">
-<link rel="stylesheet" href="styles/styles.css" type="text/css">
-
-
     <main role="main" class="container">
 
         <div class="row">
@@ -30,6 +25,12 @@ if(isset($_GET['id'])){
                     <p><?php echo $singlePost[0]['body']; ?></p>
                     <hr>
                 </div>
+
+                <form action='delete-post.php' method='POST' onsubmit="return checkDel()">
+                    <input type ='hidden' name='post_id' value="<?php echo $_GET['id']?>">
+                    <input  type = 'submit' class="btn btn-primary" name='postDel' value='Delete post'>
+                </form>
+                <br>
 
                 <h4><span>Insert comment</span></h4>
                 <form action ='create-comment.php' method='POST'>

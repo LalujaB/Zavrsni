@@ -1,5 +1,6 @@
 <?php
 include('include/db.php');
+
 if(!isset($_POST['submit'])) {
     header("Location:single-post.php?id=$id");
 }else {
