@@ -11,3 +11,13 @@ btn.addEventListener('click',function(){
         this.innerHTML = 'Show comments';
     }
 })
+
+function checkDel(){
+    let check = confirm("Do you really want to delete this post?")
+
+    if(check){
+        return true;
+    }else{
+        return false;
+    }
+}
