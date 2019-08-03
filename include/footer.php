@@ -1,7 +1,9 @@
 <footer class="blog-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>Created by Bojan Laluja</p>
     <p>
-        <a href="#">Back to top</a>
+
+        <a href="index.php">Home</a>
+        <a href="create-post.php">Create a post</a>
     </p>
 </footer>
 </body>

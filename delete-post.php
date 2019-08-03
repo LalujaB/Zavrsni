@@ -1,6 +1,8 @@
 <?php
 
 include("include/db.php");
+
+
 if (!isset($_POST['postDel'])) {
     header("location:index.php");
 } else {
